@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCYHOo1j0qQW2ljOfYBt0lD7VGSRwQyH6U",
   authDomain: "clinikk-b434d.firebaseapp.com",
@@ -12,5 +12,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-export const auth = getAuth(app);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+export {auth};

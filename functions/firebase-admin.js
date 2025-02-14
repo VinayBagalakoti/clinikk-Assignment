@@ -27,6 +27,8 @@ const db = getFirestore(admin);
 db.settings({ ignoreUndefinedProperties: true });
 
 const userRef = db.collection("users");
-// const patientsRef = db.collection("patients");
+const videoRef = db.collection("videos");
+const audioRef = db.collection("audios");
 
-export { auth, db, userRef,storage }
+
+export { auth, db, userRef,storage, videoRef,audioRef }
