@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { userRef } from "../firebase-admin.js"; // ✅ Import Firestore
+import { userRef } from "../firebase-admin.js"; 
 
 const router = Router();
 
-// ✅ Fix the route URL format (`/:id` instead of `:id`)
+
 router.get("/api/userProfile/:id", async (req, res) => {
     try {
         const userId = req.params.id;
@@ -12,13 +12,11 @@ router.get("/api/userProfile/:id", async (req, res) => {
 
         console.log("Fetching profile for user:", userId);
 
-        // ✅ Fetch User Profile from Firestore
         const userDoc = await userRef.doc(userId).get();
         if (!userDoc.exists) {
             return res.status(404).json({ error: "User not found in Firestore" });
         }
 
-        // ✅ Extract User Data
         const userData = userDoc.data();
         const videosSnapshot = await userRef.doc(userId).collection("videos").get();
         const videos = videosSnapshot.docs.map(doc => ({

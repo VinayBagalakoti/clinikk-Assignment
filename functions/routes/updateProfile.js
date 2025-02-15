@@ -1,28 +1,28 @@
 import { Router } from "express";
-import { userRef, auth } from "../firebase-admin.js"; // ✅ Import Firestore & Firebase Auth
+import { userRef, auth } from "../firebase-admin.js"; 
 
 const router = Router();
 
 router.post("/api/profileUpdate", async (req, res) => {
     try {
         const { token, username
-            , bio } = req.body; // ✅ Get user details & token from request body
+            , bio } = req.body; 
 
         if (!token) return res.status(401).json({ error: "Unauthorized - No token provided" });
 
-        // ✅ Verify Firebase Auth Token
+     
         const decodedToken = await auth.verifyIdToken(token);
         const userId = decodedToken.uid;
         console.log("Updating profile for user:", userId);
 
-        // ✅ Validate required fields
+      
         
 
-        // ✅ Update Firestore user profile
+   
         await userRef.doc(userId).set(
             {
-                ...(username && { username }),  // ✅ Update only if username is provided
-                ...(bio && { bio })            // ✅ Update only if bio is provided
+                ...(username && { username }), 
+                ...(bio && { bio })          
             }
         );
 

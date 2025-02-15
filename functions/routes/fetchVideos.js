@@ -13,12 +13,12 @@ router.get("/api/fetchVideos", async (req, res) => {
 
     const videos = snapshot.docs.map(doc => ({
       id: doc.id,
-      videoURL: doc.data().videoURL, // ✅ Video URL
-      thumbnailURL: doc.data().thumbnailURL, // ✅ Thumbnail URL
-      name: doc.data().name, // ✅ Video Name
+      videoURL: doc.data().videoURL, 
+      thumbnailURL: doc.data().thumbnailURL, 
+      name: doc.data().name,
       uploadedAt: doc.data().uploadedAt,
       creator:doc.data().creator,
-      bio:doc.data().bio
+      bio:doc.data
     }));
 
     return res.status(200).json({ videos });
